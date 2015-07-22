@@ -59,7 +59,7 @@ static int _tlog_num_threads;
  MPI_Recv((char *)(addr),nbytes,MPI_BYTE,src,TLOG_TAG,MPI_COMM_WORLD,&status)
 #endif
 
-void tlog_initialize()
+void tlog_initialize(int numt)
 {
 
 #ifdef TLOG_THREAD
@@ -70,10 +70,7 @@ void tlog_initialize()
     MPI_Comm_rank(MPI_COMM_WORLD,&_tlog_mpi_id);
 #endif
 
-#pragma omp parallel
-{
-    _tlog_num_threads = omp_get_num_threads();
-}
+    _tlog_num_threads = numt;
 
     _tlog_fname = TLOG_DEFAULT_FILENAME;
 
@@ -379,7 +376,7 @@ void tlog_log2__(enum tlog_type *type, int *tnum)
     _tlog_log(*tnum,*type,_tlog_num_threads);
 }
 
-void tlog_initialize__() { tlog_initialize(); }
+void tlog_initialize__(int *numt) { tlog_initialize(*numt); }
 
 void tlog_finalize__() { tlog_finalize(); }
 

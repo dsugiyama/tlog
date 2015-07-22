@@ -98,7 +98,7 @@ extern "C" {
 #endif
 
 /* prototypes */
-void tlog_initialize();
+void tlog_initialize(int numt);
 void tlog_finalize(void);
 void tlog_log(enum tlog_type type);
 void tlog_log2(enum tlog_type type, int tnum);
