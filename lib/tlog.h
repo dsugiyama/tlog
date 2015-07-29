@@ -9,7 +9,7 @@
 #define TRUE 1
 #define FALSE 0
 
-#define MAX_THREADS 240
+#define MAX_THREADS 1024
 #define TLOG_DEFAULT_FILENAME "trace.log"
 
 typedef enum tlog_type {
